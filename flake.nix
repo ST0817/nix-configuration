@@ -23,5 +23,7 @@
     {
       nixosConfigurations = import ./nixos inputs { inherit system; };
       homeConfigurations = import ./home inputs { pkgs = pkgsHome; };
+
+      templates = import ./templates;
     };
 }
