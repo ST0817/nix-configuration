@@ -14,6 +14,8 @@
     ./git.nix
     ./lazygit.nix
     ./direnv.nix
-    ./neovim
+    #./neovim
+    ./nixvim
+    ./stylua
   ];
 }

@@ -2,7 +2,7 @@
   description = "Rust flake template";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     fenix = {
@@ -26,7 +26,10 @@
       perSystem =
         { pkgs, system, ... }:
         let
-          toolchain = pkgs.fenix.stable.toolchain;
+          toolchain = pkgs.fenix.fromToolchainFile {
+            file = ./rust-toolchain.toml;
+            sha256 = "sha256-gh/xTkxKHL4eiRXzWv8KP7vfjSk61Iq48x47BEDFgfk=";
+          };
         in
         {
           _module.args.pkgs = import nixpkgs {

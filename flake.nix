@@ -7,22 +7,22 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-home.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs-home";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim.url = "github:nix-community/nixvim";
   };
 
   outputs =
-    inputs@{ nixpkgs-home, ... }:
+    inputs@{ nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      pkgsHome = nixpkgs-home.legacyPackages.${system};
+      pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       nixosConfigurations = import ./nixos inputs { inherit system; };
-      homeConfigurations = import ./home inputs { pkgs = pkgsHome; };
+      homeConfigurations = import ./home inputs { inherit pkgs; };
 
       templates = import ./templates;
     };

@@ -1,0 +1,30 @@
+{ ... }:
+{
+  imports = [
+    ./lz-n.nix
+    ./noice.nix
+    ./notify.nix
+    ./lualine.nix
+    ./neo-tree.nix
+    ./snacks.nix
+    ./web-devicons.nix
+    ./telescope.nix
+    ./lspconfig.nix
+    ./cmp.nix
+    ./conform.nix
+    ./treesitter.nix
+    ./ufo.nix
+    #./autopairs.nix
+    ./ultimate-autopair.nix
+    ./surround.nix
+    ./tabset.nix
+    ./indent-blankline.nix
+    ./bufferline.nix
+    ./vimade.nix
+    ./toggleterm.nix
+    ./smart-splits.nix
+    ./diffview.nix
+    ./markview.nix
+    ./lean.nix
+  ];
+}
