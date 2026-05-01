@@ -2,9 +2,9 @@
 {
   plugins.treesitter = {
     enable = true;
-    highlight.enablr = true;
-    indent.enable = true;
-    folding.enable = true;
+    #highlight.enable = true;
+    #indent.enable = true;
+    #folding.enable = true;
     grammarPackages = with config.plugins.treesitter.package.builtGrammars; [
       bash
       json

@@ -13,11 +13,11 @@
     ./cmp.nix
     ./conform.nix
     ./treesitter.nix
+    ./lsp-file-operations.nix
+    ./inc-rename.nix
     ./ufo.nix
-    #./autopairs.nix
     ./ultimate-autopair.nix
     ./surround.nix
-    ./tabset.nix
     ./indent-blankline.nix
     ./bufferline.nix
     ./vimade.nix

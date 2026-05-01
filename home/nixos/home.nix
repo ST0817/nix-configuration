@@ -10,12 +10,13 @@
 
   imports = [
     ./zsh.nix
-    ./starship.nix
+    #./starship.nix
     ./git.nix
     ./lazygit.nix
     ./direnv.nix
     #./neovim
     ./nixvim
+    ./editorconfig.nix
     ./stylua
   ];
 }

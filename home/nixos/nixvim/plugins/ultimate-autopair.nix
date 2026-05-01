@@ -11,5 +11,11 @@ lib.nixvim.plugins.mkNeovimPlugin {
       "InsertEnter"
       "CmdlineEnter"
     ];
+    settings.fastwarp = {
+      map = "<A-[>";
+      rmap = "<A-]>";
+      cmap = "<A-[>";
+      rcmap = "<A-]>";
+    };
   };
 }

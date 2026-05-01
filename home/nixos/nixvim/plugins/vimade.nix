@@ -4,7 +4,7 @@
     enable = true;
     lazyLoad.settings.event = [
       "WinEnter"
-      "WinNewPre"
+      "WinNew"
     ];
     settings = {
       recipe = {

@@ -1,11 +1,31 @@
-{ ... }:
+{ pkgs, ... }:
 {
-  lsp.servers = {
-    nixd.enable = true;
-    lua_ls.enable = true;
-    taplo.enable = true;
-    rust_analyzer.enable = true;
-    ts_ls.enable = true;
-    tinymist.enable = true;
-  };
+  lsp.servers =
+    let
+      serverNames = [
+        "taplo"
+        "jsonls"
+        "yamlls"
+        "nixd"
+        "lua_ls"
+        "rust_analyzer"
+        "ts_ls"
+        "tinymist"
+        "cmake"
+        "clangd"
+      ];
+      mapper = serverName: {
+        name = serverName;
+        value = {
+          enable = true;
+          package = null;
+        };
+      };
+    in
+    builtins.listToAttrs (map mapper serverNames);
+  extraPackages = with pkgs; [
+    taplo
+    vscode-json-languageserver
+    yaml-language-server
+  ];
 }
