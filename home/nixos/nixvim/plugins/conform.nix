@@ -8,6 +8,8 @@
         nix = [ "nixfmt" ];
         lua = [ "stylua" ];
         typst = [ "typstyle" ];
+        c = [ "clang-format" ];
+        cpp = [ "clang-format" ];
       };
       format_after_save = "true";
     };

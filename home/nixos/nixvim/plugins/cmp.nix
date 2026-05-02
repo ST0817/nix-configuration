@@ -9,6 +9,7 @@
         { name = "nvim_lsp_signature_help"; }
       ];
       completion.autocomplete = [ "cmp.TriggerEvent.TextChanged" ];
+      preselect = "cmp.PreselectMode.None";
       window = {
         completion.border = "rounded";
         documentation.border = "rounded";
@@ -16,6 +17,7 @@
       formatting.fields = [
         "abbr"
         "icon"
+        "menu"
       ];
       mapping = {
         "<Tab>" = ''
@@ -40,8 +42,10 @@
         '';
         "<Down>" = ''
           cmp.mapping(function(fallback)
-              if cmp.get_selected_entry() and cmp.get_selected_index() < #cmp.get_entries() then
-                  cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+              if cmp.get_selected_entry() then
+                  if cmp.get_selected_index() < #cmp.get_entries() then
+                      cmp.select_next_item { behavior = cmp.SelectBehavior.Select }
+                  end
               else
                   fallback()
               end
@@ -49,8 +53,10 @@
         '';
         "<Up>" = ''
           cmp.mapping(function(fallback)
-              if cmp.get_selected_entry() and cmp.get_selected_index() > 1 then
-                  cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
+              if cmp.get_selected_entry() then
+                  if cmp.get_selected_index() > 1 then
+                      cmp.select_prev_item { behavior = cmp.SelectBehavior.Select }
+                  end
               else
                   fallback()
               end

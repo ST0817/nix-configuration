@@ -11,6 +11,7 @@
     ./telescope.nix
     ./lspconfig.nix
     ./cmp.nix
+    ./lspkind.nix
     ./conform.nix
     ./treesitter.nix
     ./lsp-file-operations.nix

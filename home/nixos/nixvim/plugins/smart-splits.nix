@@ -36,5 +36,6 @@
         __unkeyed-2.__raw = ''function() require("smart-splits").move_cursor_down() end'';
       }
     ];
+    settings.default_amount = 1;
   };
 }

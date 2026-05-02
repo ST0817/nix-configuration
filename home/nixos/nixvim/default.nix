@@ -7,7 +7,6 @@
       ./colorscheme.nix
       ./options.nix
       ./keymaps.nix
-      ./autocmd.nix
       ./plugins
       ./lsp.nix
       ./diagnostic.nix

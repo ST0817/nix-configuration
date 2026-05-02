@@ -1,8 +1,9 @@
-/target
-
-# Nix
+# nix
 /result
 
 # direnv
 /.envrc
 /.direnv
+
+# rust
+/target
