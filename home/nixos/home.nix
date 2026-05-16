@@ -13,8 +13,8 @@
     ./git.nix
     ./lazygit.nix
     ./direnv.nix
-    ./nixvim
+    ./neovim
     ./editorconfig.nix
-    ./stylua
+    ./hextazy.nix
   ];
 }

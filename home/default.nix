@@ -1,11 +1,4 @@
-{ home-manager, nixvim, ... }:
-{ pkgs, ... }:
+inputs: systemInputs:
 {
-  nixos = home-manager.lib.homeManagerConfiguration {
-    inherit pkgs;
-    modules = [
-      ./nixos/home.nix
-      nixvim.homeModules.nixvim
-    ];
-  };
+  nixos = import ./nixos inputs systemInputs;
 }

@@ -2,7 +2,7 @@
   description = "Rust flake template";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
     fenix = {
@@ -44,7 +44,10 @@
               src = ./.;
             };
           devShells.default = pkgs.mkShell {
-            packages = [ toolchain ];
+            packages = [
+              toolchain
+              pkgs.nixd
+            ];
           };
         };
     };

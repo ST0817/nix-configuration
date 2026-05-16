@@ -1,0 +1,32 @@
+require "options"
+require "keymaps"
+require "treesitter"
+require "diagnostic"
+
+require("lze").load {
+    require "plugins.gruvbox-material",
+    require "plugins.neo-tree",
+    require "plugins.web-devicons",
+    require "plugins.plenary",
+    require "plugins.nui",
+    require "plugins.lsp-file-operations",
+    require "plugins.lualine",
+    require "plugins.noice",
+    require "plugins.notify",
+    require "plugins.telescope",
+    require "plugins.blink",
+    require "plugins.lspconfig",
+    require "plugins.conform",
+    require "plugins.inc-rename",
+    require "plugins.ufo",
+    require "plugins.promise-async",
+    require "plugins.ultimate-autopair",
+    require "plugins.bufferline",
+    require "plugins.vimade",
+    require "plugins.toggleterm",
+    require "plugins.smart-splits",
+    require "plugins.indent-blankline",
+    require "plugins.scrollbar",
+    require "plugins.neoscroll",
+    require "plugins.lean",
+}
