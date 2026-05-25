@@ -1,3 +1,4 @@
+---@type lze.PluginSpec
 return {
     "vimade",
     event = { "WinEnter", "WinNewPre" },
@@ -7,10 +8,11 @@ return {
                 "default",
                 { animate = true },
             },
+            fadelevel = 0.4,
             ncmode = "windows",
             blocklist = {
-                function(window, active)
-                    return active.buf_opts.buftype ~= "terminal" and window.buf_opts.ft == "leaninfo"
+                lean = function(window, active)
+                    return active.buf_opts.ft == "lean" and window.buf_opts.ft == "leaninfo"
                 end,
             },
         }

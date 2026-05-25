@@ -20,6 +20,10 @@ local options = {
     laststatus = 3,
     signcolumn = "yes",
     termguicolors = true,
+    foldcolumn = "1",
+    foldlevel = 99,
+    foldopen = "search,tag",
+    winborder = "rounded",
 }
 
 local globals = {
@@ -34,8 +38,3 @@ end
 for name, value in pairs(globals) do
     vim.g[name] = value
 end
-
-vim.o.foldcolumn = "1"
-vim.o.foldlevel = 99
-vim.o.foldopen = "search,tag"
-vim.o.winborder = "rounded"

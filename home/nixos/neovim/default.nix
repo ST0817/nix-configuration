@@ -5,47 +5,33 @@
     withRuby = false;
     withPython3 = false;
     viAlias = true;
+    defaultEditor = true;
     plugins =
       with pkgs.vimPlugins;
       let
-        other-treesitter-parsers =
-          parsers: with parsers; [
-            regex
-            json
-            bash
-            nix
-            rust
-          ];
-        treesitter = nvim-treesitter.withPlugins other-treesitter-parsers;
         startPlugins = [
           lze
+          gruvbox-material-nvim
+          nvim-web-devicons
         ];
         optPlugins = [
-          treesitter
-          gruvbox-material-nvim
+          nvim-treesitter.withAllGrammars
+          snacks-nvim
           lualine-nvim
           noice-nvim
-          nvim-notify
-          neo-tree-nvim
-          plenary-nvim
-          nui-nvim
-          nvim-web-devicons
-          telescope-nvim
+          yanky-nvim
           blink-cmp
           nvim-lspconfig
-          nvim-lsp-file-operations
+          lspsaga-nvim
           conform-nvim
           inc-rename-nvim
           nvim-ufo
-          promise-async
           ultimate-autopair-nvim
           vimade
           smart-splits-nvim
-          indent-blankline-nvim
           bufferline-nvim
-          toggleterm-nvim
-          nvim-scrollbar
           neoscroll-nvim
+          nvim-surround
           lean-nvim
         ];
         optMapper = plugin: {
@@ -54,11 +40,8 @@
         };
       in
       startPlugins ++ map optMapper optPlugins;
-    extraPackages = with pkgs; [ ripgrep ];
+    extraPackages = with pkgs; [ fd ];
     initLua = builtins.readFile ./config/init.lua;
   };
-  xdg.configFile = {
-    "nvim/lua".source = ./config/lua;
-    "nvim/after".source = ./config/after;
-  };
+  xdg.configFile."nvim/lua".source = ./config/lua;
 }

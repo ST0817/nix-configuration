@@ -1,13 +1,16 @@
-local rename = function()
-    return ":IncRename " .. vim.fn.expand "<cword>"
-end
-
+---@type lze.PluginSpec
 return {
     "inc-rename.nvim",
     keys = {
-        { "grn", rename, expr = true },
+        {
+            "grn",
+            function()
+                ---@diagnostic disable-next-line: redundant-return-value
+                return ":IncRename " .. vim.fn.expand "<cword>"
+            end,
+            expr = true,
+            desc = "IncRename",
+        },
     },
-    after = function()
-        require("inc_rename").setup()
-    end,
+    after = function() require("inc_rename").setup {} end,
 }

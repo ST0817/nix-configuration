@@ -1,37 +1,34 @@
-local neoscroll
-
-local move_up = function()
-    neoscroll.ctrl_u { duration = 250 }
-end
-
-local move_down = function()
-    neoscroll.ctrl_d { duration = 250 }
-end
-
-local scroll_up = function()
-    neoscroll.scroll(-0.1, {
-        move_cursor = false,
-        duration = 100,
-    })
-end
-
-local scroll_down = function()
-    neoscroll.scroll(0.1, {
-        move_cursor = false,
-        duration = 100,
-    })
-end
-
+---@type lze.PluginSpec
 return {
     "neoscroll.nvim",
     keys = {
-        { "<C-[>", move_up },
-        { "<C-]>", move_down },
-        { "{", scroll_up },
-        { "}", scroll_down },
+        { "{", function() require("neoscroll").ctrl_u { duration = 250 } end, desc = "move up" },
+        { "}", function() require("neoscroll").ctrl_d { duration = 250 } end, desc = "move down" },
+        {
+            "`",
+            function()
+                require("neoscroll").scroll(-0.1, {
+                    move_cursor = false,
+                    duration = 100,
+                })
+            end,
+            desc = "scroll up",
+        },
+        {
+            "*",
+            function()
+                require("neoscroll").scroll(0.1, {
+                    move_cursor = false,
+                    duration = 100,
+                })
+            end,
+            desc = "scroll down",
+        },
     },
     after = function()
-        neoscroll = require "neoscroll"
-        neoscroll.setup { mappings = {} }
+        require("neoscroll").setup {
+            mappings = {},
+            hide_cursor = false,
+        }
     end,
 }

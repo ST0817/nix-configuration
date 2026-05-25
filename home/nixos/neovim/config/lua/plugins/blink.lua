@@ -1,45 +1,26 @@
+---@type blink.cmp.KeymapConfig
 local keymap = {
     preset = "none",
-    ["<Tab>"] = {
-        function(cmp)
-            if cmp.is_visible() then
-                if cmp.get_selected_item() then
-                    return cmp.accept()
-                else
-                    return cmp.select_next()
-                end
-            end
-        end,
+    ["<S-Tab>"] = {
+        function(cmp) return cmp.is_menu_visible() and cmp.hide() or cmp.show() end,
         "fallback",
     },
+    ["<Tab>"] = { "accept", "fallback" },
     ["<Down>"] = {
         function(cmp)
-            if not cmp.get_selected_item() then
-                return
-            end
-            if cmp.get_selected_item_idx() < #cmp.get_items() then
-                return cmp.select_next()
-            else
-                return true
-            end
+            return cmp.is_menu_visible() and cmp.get_selected_item_idx() == #cmp.get_items() or cmp.select_next()
         end,
         "fallback",
     },
     ["<Up>"] = {
-        function(cmp)
-            if not cmp.get_selected_item() then
-                return
-            end
-            if cmp.get_selected_item_idx() > 1 then
-                return cmp.select_prev()
-            else
-                return true
-            end
-        end,
+        function(cmp) return cmp.is_menu_visible() and cmp.get_selected_item_idx() == 1 or cmp.select_prev() end,
         "fallback",
     },
+    ["<C-Up>"] = { "scroll_documentation_up", "fallback" },
+    ["<C-Down>"] = { "scroll_documentation_down", "fallback" },
 }
 
+---@type lze.PluginSpec
 return {
     "blink.cmp",
     event = { "BufReadPre", "CmdlineEnter" },
@@ -47,17 +28,29 @@ return {
         vim.lsp.enable {
             "nixd",
             "lua_ls",
+            "jsonls",
+            "taplo",
             "rust_analyzer",
+            "tinymist",
+            "asm_lsp",
+            "clangd",
+            "cmake",
+            "asm",
+            "nasm",
+            "ts_ls",
         }
         require("blink.cmp").setup {
             completion = {
                 list = {
                     selection = {
-                        preselect = false,
+                        preselect = true,
                         auto_insert = false,
                     },
                 },
-                menu = { border = "rounded" },
+                menu = {
+                    auto_show = false,
+                    border = "rounded",
+                },
                 documentation = {
                     auto_show = true,
                     window = { border = "rounded" },
@@ -68,13 +61,9 @@ return {
             cmdline = {
                 enabled = true,
                 completion = {
-                    list = {
-                        selection = {
-                            preselect = false,
-                            auto_insert = false,
-                        },
-                    },
-                    menu = { auto_show = true },
+                    list = { selection = { auto_insert = false } },
+                    menu = { auto_show = false },
+                    ghost_text = { enabled = true },
                 },
                 keymap = keymap,
             },

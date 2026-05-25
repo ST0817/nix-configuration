@@ -35,6 +35,8 @@
           nixfmt
           lua-language-server
           stylua
+          vscode-json-languageserver
+          jq
           taplo
         ];
       };

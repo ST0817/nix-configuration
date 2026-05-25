@@ -1,10 +1,9 @@
+---@type lze.PluginSpec
 return {
     "bufferline.nvim",
     event = {
         "BufReadPre",
         "BufNewFile",
     },
-    after = function()
-        require("bufferline").setup()
-    end,
+    after = function() require("bufferline").setup() end,
 }
