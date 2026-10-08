@@ -12,7 +12,11 @@
     "flakes"
   ];
   time.timeZone = "Asia/Tokyo";
-  fonts.packages = with pkgs; [ noto-fonts-cjk-serif ];
+  fonts.packages = with pkgs; [
+    noto-fonts-cjk-serif
+    cm_unicode
+    fira-math
+  ];
 
   programs.zsh.enable = true;
   users.users.nixos.shell = pkgs.zsh;

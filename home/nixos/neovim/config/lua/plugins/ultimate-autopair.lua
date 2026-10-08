@@ -5,10 +5,10 @@ return {
     after = function()
         require("ultimate-autopair").setup {
             fastwarp = {
-                map = "<A-[>",
-                rmap = "<A-]>",
-                cmap = "<A-[>",
-                rcmap = "<A-]>",
+                map = "<A-]>",
+                rmap = "<A-[>",
+                cmap = "<A-]>",
+                rcmap = "<A-[>",
             },
         }
     end,

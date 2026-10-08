@@ -18,6 +18,7 @@ local keymap = {
     },
     ["<C-Up>"] = { "scroll_documentation_up", "fallback" },
     ["<C-Down>"] = { "scroll_documentation_down", "fallback" },
+    ["<C-]>"] = { "snippet_forward", "fallback" },
 }
 
 ---@type lze.PluginSpec
@@ -50,6 +51,16 @@ return {
                 menu = {
                     auto_show = false,
                     border = "rounded",
+                    draw = {
+                        components = {
+                            label = {
+                                text = function(ctx) return require("colorful-menu").blink_components_text(ctx) end,
+                                highlight = function(ctx)
+                                    return require("colorful-menu").blink_components_highlight(ctx)
+                                end,
+                            },
+                        },
+                    },
                 },
                 documentation = {
                     auto_show = true,

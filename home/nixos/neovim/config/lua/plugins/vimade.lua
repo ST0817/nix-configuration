@@ -14,6 +14,8 @@ return {
                 lean = function(window, active)
                     return active.buf_opts.ft == "lean" and window.buf_opts.ft == "leaninfo"
                 end,
+                lspsaga_rename = function(_, active) return active.buf_opts.ft == "sagarename" end,
+                dap_view = function(window, _) return window.buf_opts.ft == "dap-view" end,
             },
         }
     end,

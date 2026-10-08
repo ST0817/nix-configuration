@@ -7,6 +7,7 @@ return {
     },
     keys = {
         { "K", "<CMD>Lspsaga hover_doc<CR>", desc = "Lspsaga hover_doc" },
+        { "grn", "<CMD>Lspsaga rename<CR>", desc = "Lspsaga rename" },
         { "gf", "<CMD>Lspsaga finder<CR>", desc = "Lspsaga finder" },
         { "gra", "<CMD>Lspsaga code_action<CR>", desc = "Lspsaga code_action" },
         { "gd", "<CMD>Lspsaga peek_definition<CR>", desc = "Lspsaga peek_definition" },
@@ -18,7 +19,7 @@ return {
             hover = { open_browser = "!explorer.exe" },
             definition = { keys = { edit = "<CR>" } },
             symbol_in_winbar = { enable = false },
-            ui = { title = false },
+            lightbulb = { enable = false },
         }
     end,
 }

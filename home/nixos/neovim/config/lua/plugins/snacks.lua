@@ -86,12 +86,12 @@ return {
         { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
         { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
         { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse", mode = { "n", "v" } },
-        { "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+        --{ "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
         { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
-        { "<c-/>", function() Snacks.terminal() end, desc = "Toggle Terminal" },
-        { "<c-_>", function() Snacks.terminal() end, desc = "which_key_ignore" },
-        { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-        { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+        --{ "<c-/>", function() Snacks.terminal("", { start_insert = false }) end, desc = "Toggle Terminal" },
+        --{ "<c-_>", function() Snacks.terminal() end, desc = "which_key_ignore" },
+        { "]]", function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n" } },
+        { "[[", function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n" } },
         {
             "<leader>N",
             desc = "Neovim News",
@@ -111,7 +111,7 @@ return {
             end,
         },
         -- External command
-        {
+        --[[{
             "<Leader>hx",
             function()
                 local path = vim.fn.expand "%:p"
@@ -119,7 +119,7 @@ return {
                 Snacks.terminal("hextazy " .. path)
             end,
             desc = "Hextazy",
-        },
+        },]]
     },
     after = function()
         Snacks.setup {
@@ -136,7 +136,6 @@ return {
                 win = { input = { keys = { ["<Esc>"] = { "close", mode = { "n", "i" } } } } },
                 sources = {
                     explorer = {
-                        layout = { preview = "main" },
                         focus = "input",
                         actions = { select = function(picker) picker.list:select() end },
                         win = {
@@ -146,6 +145,7 @@ return {
                     },
                 },
             },
+            terminal = { win = { position = "right" } },
         }
     end,
 }

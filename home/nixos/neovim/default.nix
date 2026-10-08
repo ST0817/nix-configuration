@@ -16,11 +16,13 @@
         ];
         optPlugins = [
           nvim-treesitter.withAllGrammars
+          nvim-treesitter-textobjects
           snacks-nvim
           lualine-nvim
           noice-nvim
           yanky-nvim
           blink-cmp
+          colorful-menu-nvim
           nvim-lspconfig
           lspsaga-nvim
           conform-nvim
@@ -32,7 +34,11 @@
           bufferline-nvim
           neoscroll-nvim
           nvim-surround
+          toggleterm-nvim
+          nvim-dap
+          nvim-dap-view
           lean-nvim
+          idris2-nvim
         ];
         optMapper = plugin: {
           inherit plugin;

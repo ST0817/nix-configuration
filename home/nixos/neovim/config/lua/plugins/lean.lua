@@ -9,6 +9,7 @@ return {
         require("lean").setup {
             mappings = true,
             infoview = { autoopen = false },
+            on_imports_out_of_date = function() end,
         }
 
         local highlight_overrides = {

@@ -30,23 +30,26 @@
             file = ./rust-toolchain.toml;
             sha256 = "sha256-gh/xTkxKHL4eiRXzWv8KP7vfjSk61Iq48x47BEDFgfk=";
           };
+          craneLib = (crane.mkLib pkgs).overrideToolchain toolchain;
+          src = craneLib.cleanCargoSource ./.;
+          commonArgs = {
+            inherit src;
+            strictDeps = true;
+          };
+          cargoArtifacts = craneLib.buildDepsOnly commonArgs;
         in
-        {
+        rec {
           _module.args.pkgs = import nixpkgs {
             inherit system;
             overlays = [ fenix.overlays.default ];
           };
-          packages.default =
-            let
-              craneLib = (crane.mkLib pkgs).overrideToolchain toolchain;
-            in
-            craneLib.buildPackage {
-              src = ./.;
-            };
-          devShells.default = pkgs.mkShell {
-            packages = [
-              toolchain
-              pkgs.nixd
+          packages.default = craneLib.buildPackage (commonArgs // { inherit cargoArtifacts; });
+          devShells.default = craneLib.devShell {
+            inputsFrom = [ packages.default ];
+            packages = with pkgs; [
+              nixd
+              nixfmt
+              taplo
             ];
           };
         };
