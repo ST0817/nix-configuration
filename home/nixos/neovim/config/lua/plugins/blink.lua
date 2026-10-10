@@ -16,6 +16,10 @@ local keymap = {
         function(cmp) return cmp.is_menu_visible() and cmp.get_selected_item_idx() == 1 or cmp.select_prev() end,
         "fallback",
     },
+    ["<C-d>"] = {
+        function(cmp) return cmp.is_documentation_visible() and cmp.hide_documentation() or cmp.show_documentation() end,
+        "fallback",
+    },
     ["<C-Up>"] = { "scroll_documentation_up", "fallback" },
     ["<C-Down>"] = { "scroll_documentation_down", "fallback" },
     ["<C-]>"] = { "snippet_forward", "fallback" },
@@ -49,7 +53,7 @@ return {
                     },
                 },
                 menu = {
-                    auto_show = false,
+                    auto_show = true,
                     border = "rounded",
                     draw = {
                         components = {
@@ -62,18 +66,17 @@ return {
                         },
                     },
                 },
+                ghost_text = { enabled = true, show_with_menu = true },
                 documentation = {
-                    auto_show = true,
                     window = { border = "rounded" },
                 },
-                ghost_text = { enabled = true },
             },
             keymap = keymap,
             cmdline = {
                 enabled = true,
                 completion = {
                     list = { selection = { auto_insert = false } },
-                    menu = { auto_show = false },
+                    menu = { auto_show = true },
                     ghost_text = { enabled = true },
                 },
                 keymap = keymap,

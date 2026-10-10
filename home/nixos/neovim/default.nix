@@ -38,6 +38,7 @@
           nvim-dap
           nvim-dap-view
           lean-nvim
+          markdown-preview-nvim
           idris2-nvim
         ];
         optMapper = plugin: {

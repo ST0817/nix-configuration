@@ -24,6 +24,7 @@ require("lze").load {
     require "plugins.toggleterm",
     require "plugins.dap",
     require "plugins.dap-view",
+    require "plugins.markdown-preview",
     require "plugins.lean",
     require "plugins.idris2",
 }
