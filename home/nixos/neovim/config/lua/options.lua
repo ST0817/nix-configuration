@@ -24,6 +24,7 @@ local options = {
     foldlevel = 99,
     foldopen = "search,tag",
     winborder = "rounded",
+    clipboard = "unnamedplus",
 }
 
 local globals = {

@@ -36,7 +36,8 @@
           nvim-surround
           toggleterm-nvim
           nvim-dap
-          nvim-dap-view
+          nvim-nio
+          nvim-dap-ui
           lean-nvim
           markdown-preview-nvim
           idris2-nvim
