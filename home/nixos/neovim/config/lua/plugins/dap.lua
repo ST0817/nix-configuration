@@ -14,10 +14,11 @@ return {
             type = "gdb",
             request = "launch",
             program = function()
-                return vim.fn.input {
+                local path = vim.fn.input {
                     prompt = "Path to executable",
                     completion = "file",
                 }
+                return (path and path ~= "") and path or dap.ABORT
             end,
         }
         dap.configurations.asm = { gdb_launch }
